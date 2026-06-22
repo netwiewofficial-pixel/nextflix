@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nextflix Sri Lanka - Watch TV Shows Online, Watch Movies Online</title>
+    <title>Film One - Watch Movies & TV Shows Online</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { background-color: #141414; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; overflow-x: hidden; }
-        .netflix-bg {
+        .hero-bg {
             background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.9) 100%), 
                         url('https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c9-ba3f-4c88-85ba-6e240a1493c8/43e0d4a6-40db-46e3-8af3-bc79fa033288/LK-en-20240325-popsignuptwoweeks-perspective_alpha_website_large.jpg');
             background-size: cover; background-position: center;
@@ -18,7 +18,7 @@
                         url('https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=1200&auto=format&fit=crop');
             background-size: cover; background-position: center;
         }
-        /* Sidebar & Screen Transitions */
+        /* Sidebar Transitions */
         #settings-sidebar { transition: transform 0.4s ease-in-out; }
         .sidebar-open { transform: translateX(0); }
         .sidebar-closed { transform: translateX(100%); }
@@ -29,9 +29,9 @@
 <body class="text-white select-none">
 
     <div id="landing-screen" class="block">
-        <div class="netflix-bg min-h-[95vh] w-full flex flex-col justify-between px-6 md:px-24 py-6 relative pb-12">
+        <div class="hero-bg min-h-[95vh] w-full flex flex-col justify-between px-6 md:px-24 py-6 relative pb-12">
             <div class="flex justify-between items-center z-10">
-                <h1 class="text-[#E50914] text-3xl md:text-4xl font-black tracking-tighter">NEXTFLIX</h1>
+                <h1 class="text-[#E50914] text-3xl md:text-4xl font-black tracking-tighter">FILM <span class="text-white">ONE</span></h1>
                 <button class="bg-[#E50914] text-white px-4 py-1.5 rounded font-medium text-sm hover:bg-red-700 transition">Sign In</button>
             </div>
             <div class="flex flex-col items-center text-center justify-center my-auto z-10 max-w-3xl mx-auto w-full">
@@ -46,12 +46,16 @@
                     <button onclick="loginWithFacebook()" class="bg-[#1877F2] text-white font-bold py-3 px-4 rounded flex items-center justify-center gap-2 hover:bg-blue-700 transition cursor-pointer"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" class="w-5"> Facebook</button>
                 </div>
             </div>
+            
+            <div class="w-full text-center text-[10px] text-gray-500 z-10 mt-6 border-t border-gray-800/60 pt-4">
+                Disclaimer: Film One is an independent, non-commercial educational portfolio platform for movie indexing and review. We are NOT affiliated, associated, or officially connected with Netflix Inc., Prime Video, or any official streaming network.
+            </div>
         </div>
     </div>
 
     <div id="home-screen" class="hidden bg-[#141414] min-h-screen">
         <nav class="flex justify-between items-center px-4 md:px-12 py-4 bg-gradient-to-b from-black to-transparent sticky top-0 z-50">
-            <h1 class="text-[#E50914] text-2xl md:text-3xl font-black tracking-tighter">NEXTFLIX</h1>
+            <h1 class="text-[#E50914] text-2xl md:text-3xl font-black tracking-tighter">FILM <span class="text-white">ONE</span></h1>
             <div class="flex items-center gap-4">
                 <i onclick="toggleSidebar()" class="fa-solid fa-bars-staggered text-2xl cursor-pointer hover:text-red-500 transition"></i>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" class="w-8 h-8 rounded border border-gray-600">
@@ -98,7 +102,7 @@
                 </div>
                 <div class="bg-gradient-to-r from-red-950/40 to-black p-4 rounded-xl border border-red-900/40 mb-6">
                     <h4 class="text-yellow-500 font-black flex items-center gap-2 text-sm"><i class="fa-solid fa-bolt"></i> NO ADS MODE</h4>
-                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">Stop YouTube trailer ads instantly by upgrading.</p>
+                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">Stop trailer ads instantly by upgrading.</p>
                     <button onclick="alert('LKR 299 Payment Gateway Opening...')" class="mt-3 w-full bg-red-600 py-2 rounded-lg font-bold text-xs hover:bg-red-700 transition">ACTIVATE - LKR 299</button>
                 </div>
             </div>
@@ -110,7 +114,7 @@
         </div>
     </div>
 
-    <div id="movie-player-screen" class="hidden bg-[#141414] min-h-screen px-4 md:px-16 py-6 animate-fade-in">
+    <div id="movie-player-screen" class="hidden bg-[#141414] min-h-screen px-4 md:px-16 py-6">
         <button onclick="closeMoviePlayer()" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white font-bold text-sm cursor-pointer transition">
             <i class="fa-solid fa-arrow-left"></i> Back to Home
         </button>
@@ -134,7 +138,6 @@
                 <h3 class="text-lg font-bold text-gray-400 mb-4 uppercase tracking-wider"><i class="fa-solid fa-circle-info text-red-500 mr-2"></i> Cast & Official Streaming Links</h3>
                 
                 <div class="flex gap-6 overflow-x-auto no-scrollbar py-2 items-center">
-                    
                     <div class="flex flex-col items-center gap-2 text-center min-w-[90px]">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Lee_Jung-jae_at_a_brand_event_in_October_2023_%282%29.jpg" class="w-16 h-16 rounded-full object-cover border-2 border-gray-700 shadow-md">
                         <span class="text-xs font-medium text-gray-300">Lee Jung-jae</span>
@@ -153,7 +156,6 @@
                     <a href="https://www.netflix.com" target="_blank" class="flex items-center gap-3 bg-[#E50914] px-5 py-3 rounded-xl font-bold text-sm min-w-[160px] shadow-lg hover:bg-red-700 transition">
                         <i class="fa-solid fa-play"></i> Watch on Netflix
                     </a>
-
                     <a href="https://www.primevideo.com" target="_blank" class="flex items-center gap-3 bg-[#1A242F] border border-blue-500/30 px-5 py-3 rounded-xl font-bold text-sm min-w-[180px] shadow-lg hover:bg-slate-800 transition">
                         <i class="fa-solid fa-video text-blue-400"></i> Prime Video Link
                     </a>
@@ -180,9 +182,9 @@
         const db = getFirestore(app);
         const auth = getAuth(app);
         
+        // Admin Auth Credentials
         const OWNER_EMAIL = "netwiewofficial@gmail.com"; 
 
-        // Screen Navigation Functions
         window.openMoviePlayer = function() {
             document.getElementById('home-screen').classList.add('hidden');
             document.getElementById('movie-player-screen').classList.remove('hidden');
