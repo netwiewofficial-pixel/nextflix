@@ -508,6 +508,43 @@
             alert("Security Check Passed! Processing: " + emailInput);
             // window.location.href = "nextpage.html"; // වෙන පිටුවකට යැවීමට
         }
+    </script><script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  // ⚠️ මේ තියෙන්නේ ඔයා කොපි කරගත්තු කෝඩ් එක (firebaseConfig)
+  const firebaseConfig = {
+    apiKey: "AIzaSyAG6fzjVWksXVawN58Y3co698...", // ඔයා කොපි කරපු එකේ තියෙන සම්පූර්ණ එකම මෙතනට වැටෙන්න දෙන්න
+    authDomain: "nextflix-db-5c782.firebaseapp.com",
+    projectId: "nextflix-db-5c782",
+    storageBucket: "nextflix-db-5c782.appspot.com",
+    messagingSenderId: "330584392048",
+    appId: "1:330584392048:web:3cc8b46f46c1987ba138e6",
+    measurementId: "G-B4ZCNDXTS5"
+  };
+
+  // Firebase Init කිරීම
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Form එක සබ්මිට් වෙද්දී Firebase එකට Email එක යවන හැටි
+  window.validateSecureForm = async function(event) {
+    event.preventDefault();
+    const emailInput = document.getElementById('userEmail').value;
+
+    try {
+      // 'registered_users' කියන Collection එකට Email එක සහ වෙලාව සේව් කිරීම
+      await addDoc(collection(db, "registered_users"), {
+        email: emailInput,
+        timestamp: new Date()
+      });
+      
+      alert("නියමයි! ඔයාගේ Email එක Firebase Database එකට සාර්ථකව සේව් වුණා! 🎉");
+      document.getElementById('userEmail').value = ""; // කොටුව හිස් කිරීම
+    } catch (e) {
+      alert("අවුලක් වුණා: " + e.message);
+    }
+  }
     </script>
 </body>
 </html>
