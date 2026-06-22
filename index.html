@@ -18,11 +18,12 @@
                         url('https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=1200&auto=format&fit=crop');
             background-size: cover; background-position: center;
         }
-        /* Sidebar Transitions */
+        /* Sidebar & Screen Transitions */
         #settings-sidebar { transition: transform 0.4s ease-in-out; }
         .sidebar-open { transform: translateX(0); }
         .sidebar-closed { transform: translateX(100%); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="text-white select-none">
@@ -57,116 +58,38 @@
             </div>
         </nav>
 
-        <div class="squid-bg h-[60vh] w-full flex flex-col justify-center px-6 md:px-12 relative -mt-16">
+        <div class="squid-bg h-[55vh] w-full flex flex-col justify-center px-6 md:px-12 relative -mt-16">
             <div class="max-w-xl z-10">
                 <h2 class="text-5xl font-black mb-2 text-red-500">SQUID GAME</h2>
                 <p class="text-yellow-400 font-bold mb-4">▶ Trending #1 in Sri Lanka</p>
-                <button onclick="alert('Enjoying Ad-Free Thriller...🎬')" class="bg-white text-black px-8 py-2 rounded font-bold hover:bg-gray-200 transition cursor-pointer">🔴 Play</button>
+                <button onclick="openMoviePlayer()" class="bg-white text-black px-8 py-2 rounded font-bold hover:bg-gray-200 transition cursor-pointer">🔴 Watch Now</button>
+            </div>
+        </div>
+
+        <div class="px-4 md:px-12 py-8 z-20 relative">
+            <h3 class="text-lg font-bold mb-4 text-gray-300">Trending Now</h3>
+            <div class="flex gap-4 overflow-x-auto no-scrollbar">
+                <div onclick="openMoviePlayer()" class="min-w-[150px] md:min-w-[200px] h-[225px] md:h-[300px] bg-gray-800 rounded-md overflow-hidden transform hover:scale-105 transition cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=400" class="w-full h-full object-cover">
+                </div>
             </div>
         </div>
 
         <div id="settings-sidebar" class="fixed top-0 right-0 h-full w-72 md:w-80 bg-black/95 border-l border-gray-800 z-[100] p-6 sidebar-closed shadow-2xl flex flex-col justify-between">
-            
             <div>
                 <div class="flex justify-between items-center mb-8">
                     <h3 class="text-xl font-bold text-gray-200"><i class="fa-solid fa-gear text-red-500 mr-2"></i>Settings</h3>
                     <i onclick="toggleSidebar()" class="fa-solid fa-xmark text-2xl cursor-pointer hover:text-red-500 transition"></i>
                 </div>
-
                 <div class="mb-6 border border-gray-800 rounded-lg overflow-hidden">
-                    <button onclick="toggleLanguageCategory()" class="w-full flex justify-between items-center bg-gray-900/60 p-4 font-bold text-sm tracking-wide text-gray-300 hover:bg-gray-900 transition">
+                    <button onclick="toggleLanguageCategory()" class="w-full flex justify-between items-center bg-gray-900/60 p-4 font-bold text-sm text-gray-300 hover:bg-gray-900 transition">
                         <span class="flex items-center gap-3"><i class="fa-solid fa-language text-red-500 text-lg"></i> LANGUAGE</span>
                         <i id="language-chevron" class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
                     </button>
-                    
                     <div id="language-dropdown-content" class="hidden bg-black/50 p-3 flex flex-col gap-2 max-h-60 overflow-y-auto no-scrollbar border-t border-gray-900">
-                        <button onclick="alert('Language changed to English')" class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇺🇸</span> English</button>
-                        <button onclick="alert('භාෂාව සිංහලට වෙනස් කරන ලදී')" class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇱🇰</span> Sinhala</button>
-                        <button onclick="alert('மொழி தமிழுக்கு மாற்றப்பட்டது')" class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇮🇳</span> Tamil</button>
-                        <button onclick="alert('한국어로 변경됨')" class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇰🇷</span> Korean</button>
-                        <button onclick="alert('日本語に変更')" class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇯🇵</span> Japanese</button>
-                        <button onclick="alert('中文变更')" class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇨🇳</span> Chinese</button>
-                        <button onclick="alert('हिंदी में बदला गया')" class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇮🇳</span> Hindi</button>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-red-950/40 to-black p-4 rounded-xl border border-red-900/40 mb-6">
-                    <h4 class="text-yellow-500 font-black flex items-center gap-2 text-sm"><i class="fa-solid fa-bolt"></i> NO ADS MODE</h4>
-                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">Stop YouTube trailer ads instantly by upgrading.</p>
-                    <button onclick="alert('LKR 299 Payment Gateway Opening...')" class="mt-3 w-full bg-red-600 py-2 rounded-lg font-bold text-xs hover:bg-red-700 transition cursor-pointer">ACTIVATE - LKR 299</button>
-                </div>
-            </div>
-
-            <div id="admin-panel" class="hidden border-t border-gray-900 pt-4 mb-2">
-                <button onclick="alert('Welcome Owner! Opening Live Customizer...🛠️')" class="w-full bg-emerald-600/10 text-emerald-400 border border-emerald-500/30 py-2.5 rounded-lg font-bold text-xs hover:bg-emerald-600/20 transition cursor-pointer flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-user-shield text-sm"></i> ADMIN DASHBOARD
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAG6fzjVWksXVawN58Y3co698", 
-            authDomain: "nextflix-db-5c782.firebaseapp.com",
-            projectId: "nextflix-db-5c782",
-            storageBucket: "nextflix-db-5c782.appspot.com",
-            messagingSenderId: "330584392048",
-            appId: "1:330584392048:web:3cc8b46f46c1987ba138e6"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-        
-        // 🔐 ඔයාගේ නිවැරදිම Email එක මෙතනට සෙට් කරලා තියෙන්නේ:
-        const OWNER_EMAIL = "netwiewofficial@gmail.com"; 
-
-        // Sidebar එක අරින/වහන Function එක
-        window.toggleSidebar = function() {
-            const sb = document.getElementById('settings-sidebar');
-            sb.classList.toggle('sidebar-closed');
-            sb.classList.toggle('sidebar-open');
-        };
-
-        // Language Category එක Expand/Collapse කරන කෝඩ් එක
-        window.toggleLanguageCategory = function() {
-            const content = document.getElementById('language-dropdown-content');
-            const chevron = document.getElementById('language-chevron');
-            content.classList.toggle('hidden');
-            chevron.classList.toggle('rotate-180');
-        };
-
-        function enterHome(user) {
-            document.getElementById('landing-screen').classList.replace('block', 'hidden');
-            document.getElementById('home-screen').classList.replace('hidden', 'block');
-            
-            // සෙකියුරිටි චෙක් එක: ලොග් වුණු කෙනා netwiewofficial@gmail.com නම් විතරක් Admin Panel පෙන්වයි
-            if(user && user.email === OWNER_EMAIL) {
-                document.getElementById('admin-panel').classList.remove('hidden');
-            }
-        }
-
-        window.validateSecureForm = async (e, form) => {
-            e.preventDefault();
-            const email = form.querySelector('input').value;
-            await addDoc(collection(db, "registered_users"), { email, time: new Date() });
-            enterHome({ email });
-        };
-
-        window.loginWithGoogle = async () => {
-            const res = await signInWithPopup(auth, new GoogleAuthProvider());
-            enterHome(res.user);
-        };
-
-        window.loginWithFacebook = async () => {
-            const res = await signInWithPopup(auth, new FacebookAuthProvider());
-            enterHome(res.user);
-        };
-    </script>
-</body>
-</html>
+                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇺🇸</span> English</button>
+                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇱🇰</span> Sinhala</button>
+                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇮🇳</span> Tamil</button>
+                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇰🇷</span> Korean</button>
+                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇯🇵</span> Japanese</button>
+                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p
