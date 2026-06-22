@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix Sri Lanka - Watch TV Shows Online, Watch Movies Online</title>
+    <title>Nextflix Sri Lanka - Watch TV Shows Online, Watch Movies Online</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         body {
@@ -22,7 +22,6 @@
             background-size: cover;
             background-position: center;
         }
-        /* Scrollbar හැංගීමට */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -30,39 +29,54 @@
 <body class="text-white select-none">
 
     <div id="landing-screen" class="block">
-        <div class="netflix-bg h-[95vh] w-full flex flex-col justify-between px-6 md:px-24 py-6 relative">
+        <div class="netflix-bg min-h-[95vh] w-full flex flex-col justify-between px-4 md:px-24 py-6 relative pb-12">
             <div class="flex justify-between items-center z-10">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" class="w-28 md:w-40">
+                <h1 class="text-[#E50914] text-3xl md:text-4xl font-black tracking-tighter">NEXTFLIX</h1>
                 <button class="bg-[#E50914] text-white px-4 py-1.5 rounded font-medium text-sm hover:bg-red-700 transition">Sign In</button>
             </div>
 
-            <div class="flex flex-col items-center text-center justify-center my-auto z-10 max-w-3xl mx-auto">
+            <div class="flex flex-col items-center text-center justify-center my-auto z-10 max-w-3xl mx-auto w-full">
                 <h1 class="text-3xl md:text-5xl font-black mb-4">Unlimited movies, TV shows, and more</h1>
                 <p class="text-lg md:text-2xl font-normal mb-6">Watch anywhere. Cancel anytime.</p>
-                <p class="text-sm md:text-xl font-normal mb-4">Ready to watch? Enter your email to create or restart your membership.</p>
+                <p class="text-sm md:text-xl font-normal mb-4">Ready to watch? Enter your email or sign in with socials.</p>
                 
-                <form onsubmit="validateSecureForm(event, this)" class="flex flex-col md:flex-row gap-3 w-full max-w-xl px-4">
+                <form onsubmit="validateSecureForm(event, this)" class="flex flex-col md:flex-row gap-3 w-full max-w-xl px-4 mb-4">
                     <input type="email" placeholder="Email address" required class="bg-black/50 border border-gray-500 rounded p-4 flex-grow text-white placeholder-gray-400 focus:outline-none focus:border-white">
                     <button type="submit" class="bg-[#E50914] text-white text-xl font-semibold py-3 px-6 rounded flex items-center justify-center gap-2 hover:bg-red-700 transition cursor-pointer">
                         Get Started <span>&gt;</span>
                     </button>
                 </form>
+
+                <div class="flex items-center my-2 w-full max-w-xl px-4">
+                    <div class="flex-grow border-t border-gray-600"></div>
+                    <span class="mx-4 text-gray-400 text-sm">OR</span>
+                    <div class="flex-grow border-t border-gray-600"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl px-4 mt-2">
+                    <button onclick="loginWithGoogle()" class="flex items-center justify-center gap-2 bg-white text-black font-bold py-3 px-4 rounded hover:bg-gray-200 transition cursor-pointer text-sm">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_\"Circles\"_Logo.svg" class="w-5 h-5" alt="">
+                        Google
+                    </button>
+                    <button onclick="loginWithFacebook()" class="flex items-center justify-center gap-2 bg-[#1877F2] text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition cursor-pointer text-sm">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.svg" class="w-5 h-5" alt="">
+                        Facebook
+                    </button>
+                    <button onclick="loginWithTwitter()" class="flex items-center justify-center gap-2 bg-black border border-gray-700 text-white font-bold py-3 px-4 rounded hover:bg-gray-900 transition cursor-pointer text-sm">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_original.svg" class="w-4 h-4 invert" alt="">
+                        Twitter (X)
+                    </button>
+                    <button onclick="loginWithTikTok()" class="flex items-center justify-center gap-2 bg-[#000000] border border-pink-500 text-white font-bold py-3 px-4 rounded hover:bg-gray-900 transition cursor-pointer text-sm">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/TikTok_logo.svg" class="w-5 h-5" alt="">
+                        TikTok
+                    </button>
+                </div>
             </div>
         </div>
 
         <div class="h-2 bg-[#232323] w-full"></div>
-
-        <div class="bg-black py-16 px-6 md:px-24 text-center">
-            <div class="max-w-3xl mx-auto mb-10">
-                <p class="text-sm md:text-xl font-normal mb-4">Ready to watch? Enter your email to create or restart your membership.</p>
-                <form onsubmit="validateSecureForm(event, this)" class="flex flex-col md:flex-row gap-3 w-full max-w-xl mx-auto px-4">
-                    <input type="email" placeholder="Email address" required class="bg-black/50 border border-gray-500 rounded p-4 flex-grow text-white placeholder-gray-400 focus:outline-none focus:border-white">
-                    <button type="submit" class="bg-[#E50914] text-white text-xl font-semibold py-3 px-6 rounded flex items-center justify-center gap-2 hover:bg-red-700 transition cursor-pointer">
-                        Get Started <span>&gt;</span>
-                    </button>
-                </form>
-            </div>
-            <p class="text-gray-500 text-sm">Netflix Clone - Created for Educational Purposes</p>
+        <div class="bg-black py-8 text-center">
+            <p class="text-gray-500 text-sm">Nextflix Clone - Created for Educational Purposes</p>
         </div>
     </div>
 
@@ -70,17 +84,16 @@
     <div id="home-screen" class="hidden bg-[#141414] min-h-screen flex flex-col">
         <nav class="flex justify-between items-center px-4 md:px-12 py-4 bg-gradient-to-b from-black to-transparent sticky top-0 z-50">
             <div class="flex items-center gap-6">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" class="w-24">
+                <h1 class="text-[#E50914] text-2xl md:text-3xl font-black tracking-tighter">NEXTFLIX</h1>
                 <div class="hidden md:flex gap-4 text-sm text-gray-300">
                     <a href="#" class="hover:text-white font-bold transition">Home</a>
                     <a href="#" class="hover:text-white transition">TV Shows</a>
                     <a href="#" class="hover:text-white transition">Movies</a>
-                    <a href="#" class="hover:text-white transition">New & Popular</a>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <span class="text-sm hidden sm:block text-green-400 font-semibold">Premium Active VIP</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Avatar" class="w-8 h-8 rounded cursor-pointer">
+                <span id="user-display-name" class="text-sm hidden sm:block text-green-400 font-semibold">Welcome VIP Member</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Avatar" class="w-8 h-8 rounded">
             </div>
         </nav>
 
@@ -88,17 +101,16 @@
             <div class="max-w-xl z-10 mt-12">
                 <h2 class="text-4xl md:text-6xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500">SQUID GAME</h2>
                 <p class="text-yellow-400 font-bold text-sm md:text-lg mb-4">▶ Season 3 Now Streaming</p>
-                <p class="text-gray-300 text-xs md:text-sm mb-6 line-clamp-3">Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits with deadly high stakes. Will you survive the round?</p>
+                <p class="text-gray-300 text-xs md:text-sm mb-6 line-clamp-3">Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits with deadly high stakes.</p>
                 <div class="flex gap-3">
-                    <button onclick="alert('Starting Movie Stream... 🎬')" class="bg-white text-black px-6 py-2 rounded font-bold flex items-center gap-2 hover:bg-gray-200 transition text-sm md:text-base cursor-pointer">🔴 Play Now</button>
-                    <button class="bg-gray-500/60 text-white px-6 py-2 rounded font-bold hover:bg-gray-500 transition text-sm md:text-base">ℹ️ More Info</button>
+                    <button onclick="alert('Starting Movie Stream... 🎬')" class="bg-white text-black px-6 py-2 rounded font-bold flex items-center gap-2 hover:bg-gray-200 transition cursor-pointer">🔴 Play Now</button>
                 </div>
             </div>
         </div>
 
         <div class="px-4 md:px-12 py-8 flex flex-col gap-8 -mt-10 z-20 relative">
             <div>
-                <h3 class="text-lg md:text-xl font-bold mb-4 text-gray-200">Trending Now in Sri Lanka</h3>
+                <h3 class="text-lg md:text-xl font-bold mb-4 text-gray-200">Trending Now on Nextflix</h3>
                 <div class="flex gap-4 overflow-x-auto no-scrollbar pb-4">
                     <div class="min-w-[140px] md:min-w-[200px] h-[210px] md:h-[300px] bg-gray-800 rounded-md overflow-hidden transition transform hover:scale-105 duration-300 cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
@@ -109,12 +121,6 @@
                     <div class="min-w-[140px] md:min-w-[200px] h-[210px] md:h-[300px] bg-gray-800 rounded-md overflow-hidden transition transform hover:scale-105 duration-300 cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
                     </div>
-                    <div class="min-w-[140px] md:min-w-[200px] h-[210px] md:h-[300px] bg-gray-800 rounded-md overflow-hidden transition transform hover:scale-105 duration-300 cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
-                    </div>
-                    <div class="min-w-[140px] md:min-w-[200px] h-[210px] md:h-[300px] bg-gray-800 rounded-md overflow-hidden transition transform hover:scale-105 duration-300 cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
-                    </div>
                 </div>
             </div>
         </div>
@@ -124,6 +130,8 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        // Auth Imports
+        import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
         // Firebase Config
         const firebaseConfig = {
@@ -139,33 +147,77 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const auth = getAuth(app);
 
-        // Form Submit Function
+        // Providers
+        const googleProvider = new GoogleAuthProvider();
+        const facebookProvider = new FacebookAuthProvider();
+        const twitterProvider = new TwitterAuthProvider(); // Twitter Provider එක
+
+        // Navigation Function
+        function enterNextflix(name) {
+            if(name) {
+                document.getElementById('user-display-name').innerText = "VIP: " + name;
+            }
+            document.getElementById('landing-screen').classList.replace('block', 'hidden');
+            document.getElementById('home-screen').classList.replace('hidden', 'block');
+        }
+
+        // Email Form Submit
         window.validateSecureForm = async function(event, formElement) {
             event.preventDefault();
-            
             const emailInput = formElement.querySelector('input[type="email"]');
             const emailValue = emailInput.value;
-
             try {
-                // Firestore එකට Email එක යැවීම
                 await addDoc(collection(db, "registered_users"), {
                     email: emailValue,
                     timestamp: new Date()
                 });
-                
-                // 🪄 මාරු වෙන මැජික් එක මෙතන තියෙන්නේ:
-                // 1. පරණ ලොගින් ස්ක්‍රීන් එක හංගනවා
-                document.getElementById('landing-screen').classList.replace('block', 'hidden');
-                
-                // 2. අලුත් ෆිල්ම් හෝම් ස්ක්‍රීන් එක පෙන්වනවා
-                document.getElementById('home-screen').classList.replace('hidden', 'block');
-                
+                enterNextflix(emailValue.split('@')[0]);
             } catch (e) {
-                alert("Error connecting to database: " + e.message);
+                alert("Error: " + e.message);
             }
+        }
+
+        // 1. Google Login
+        window.loginWithGoogle = async function() {
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                enterNextflix(result.user.displayName);
+            } catch (error) {
+                alert("Google Error: " + error.message);
+            }
+        }
+
+        // 2. Facebook Login
+        window.loginWithFacebook = async function() {
+            try {
+                const result = await signInWithPopup(auth, facebookProvider);
+                enterNextflix(result.user.displayName);
+            } catch (error) {
+                alert("Facebook Error: " + error.message);
+            }
+        }
+
+        // 3. 🐦 TWITTER (X) LOGIN
+        window.loginWithTwitter = async function() {
+            try {
+                const result = await signInWithPopup(auth, twitterProvider);
+                enterNextflix(result.user.displayName);
+            } catch (error) {
+                alert("Twitter Error: " + error.message + "\n\n💡 උපදෙස්: Firebase Console එකෙන් Twitter (X) Sign-in ක්‍රමවේදය සක්‍රීය කර API කීස් ලබාදිය යුතුය.");
+            }
+        }
+
+        // 4. 🎵 TIKTOK LOGIN (Educational Mock Flow)
+        window.loginWithTikTok = function() {
+            // සටහන: Firebase වල TikTok සඳහා කෙලින්ම "one-click" Provider කෙනෙක් නැත. 
+            // ඒ සඳහා TikTok Developer Account එකක් සාදා Custom OpenID ටෝකන් එකක් ලින්ක් කළ යුතුය.
+            // දැනට ප්‍රොටෝටයිප් එකක් නිසා ක්ලික් කළ සැනින් සයිට් එක ඇතුළට යාමට සකසා ඇත.
+            alert("Connecting to TikTok Secure Login... 🎵");
+            enterNextflix("TikTok_User");
         }
     </script>
 
 </body>
-</html>
+    </html>
